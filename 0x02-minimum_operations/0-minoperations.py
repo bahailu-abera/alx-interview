@@ -4,15 +4,15 @@ Module minoperations
 """
 
 
-def minOperations(n: int) -> int:
+def minOperations(n):
     """
      Returns the fewest number of operations needed to result
     in exactly n H characters in the file.
     """
-    prev: int
-    written: int = 1
-    left: int = n - 1
-    minop: int = 0
+    prev = 1
+    written = 1
+    left = n - 1
+    minop = 0
 
     while left > 0:
         # Copy and poste operation
