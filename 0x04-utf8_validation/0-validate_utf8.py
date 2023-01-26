@@ -17,12 +17,12 @@ def validUTF8(data):
     num = data[0]
     while byte < 4:
         shift = word - byte
-        bit = (num >> shift) & 1
+        bit = num >> shift & 1
         if not bit:
             break
         byte += 1
     shift = word - byte
-    bit = (num >> shift) & 1
+    bit = num >> shift & 1
     if byte == 1 or byte > size or bit:
         return False
     if byte == 0:
@@ -33,4 +33,4 @@ def validUTF8(data):
         shift = word - 1
         if not (num >> word & 1) or (num >> shift & 1):
             return False
-    return validUTF8(data[i:])
+    return validUTF8(data[i + 1:])
