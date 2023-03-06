@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 Module to determine the minimum number of coins to make a total
 """
