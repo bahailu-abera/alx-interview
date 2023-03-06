@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 Module for finding the perimiter of island
 """
