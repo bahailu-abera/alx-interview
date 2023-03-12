@@ -46,8 +46,8 @@ def isWinner(x, nums):
     p1 = 0
     p2 = 0
 
-    for num in nums:
-        if primes[num - 1] & 1:
+    for i in range(x):
+        if primes[nums[i] - 1] & 1:
             p1 += 1
         else:
             p2 += 1
