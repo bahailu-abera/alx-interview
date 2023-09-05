@@ -3,35 +3,28 @@
 Module for Prime Game
 """
 
-
-def isprime(n):
-    """
-    Determines if the given integer is prime
-    """
-    if n & 1 == 0 or n % 3 == 0:
-        return False
-    i = 5
-    while i < n:
-        if n % i == 0 or n % (i + 2) == 0:
-            return False
-        i += 6
-
-    return True
-
-
-def primeNumbers(num):
+def prime_numbers(n):
     """
     Determines number of primes in a given range
     """
-    primes = [0, 1, 2]
-    i = 3
+    mark = [True for _ in range(n + 1)]
+    primes = [0 for _ in range(n + 1)]
+    count = 0
 
-    for n in range(4, num + 1):
-        if isprime(n):
-            primes.append(primes[i - 1] + 1)
-        else:
-            primes.append(primes[i - 1])
+    i = 2
+
+    while i * i <= n:
+        if mark[i]:
+            for j in range(i * i, n + 1, i):
+                mark[j] = False
+
         i += 1
+
+    for i in range(2, n + 1):
+        if mark[i]:
+            count += 1
+
+        primes[i] = count
 
     return primes
 
@@ -42,18 +35,17 @@ def isWinner(x, nums):
     @nums: an array of integers
     Return: name of the player that won the game
     """
-    primes = primeNumbers(max(nums))
-    p1 = 0
-    p2 = 0
+    ben = maria = 0
+    primes = prime_numbers(max(nums))
 
-    for i in range(x):
-        if primes[nums[i] - 1] & 1:
-            p1 += 1
-        else:
-            p2 += 1
+    for n in nums:
+        maria += primes[n] & 1
+        ben += (primes[n] & 1) ^ 1
 
-    if p1 > p2:
-        return "Maria"
-    elif p1 < p2:
-        return "Ben"
+    if maria > ben:
+        return 'maria'
+
+    if ben > maria:
+        return 'ben'
+
     return None
