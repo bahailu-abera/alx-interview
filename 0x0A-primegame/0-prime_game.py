@@ -44,9 +44,9 @@ def isWinner(x, nums):
         ben += (primes[n] & 1) ^ 1
 
     if maria > ben:
-        return 'maria'
+        return 'Maria'
 
     if ben > maria:
-        return 'ben'
+        return 'Ben'    
 
     return None
