@@ -39,14 +39,16 @@ def isWinner(x, nums):
     ben = maria = 0
     primes = prime_numbers(max(nums))
 
-    for n in nums:
-        maria += primes[n] & 1
-        ben += (primes[n] & 1) ^ 1
+    for i in range(x):
+        if primes[nums[i]] % 2 == 0:
+            ben += 1
+        else:
+            maria += 1
 
     if maria > ben:
         return 'Maria'
 
     if ben > maria:
-        return 'Ben'    
+        return 'Ben'
 
     return None
